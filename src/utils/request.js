@@ -2,7 +2,12 @@ import { BASEURL } from './url'
 
 // 封装的网络请求的方法
 export const fetch = params => {
-  const { method = 'GET', url, data, header } = params
+  const { method = 'GET', url, data, header = {} } = params
+
+  const token = uni.getStorageSync('token')
+  if (token) {
+    header.Authorization = token
+  }
 
   return new Promise((resolve, reject) => {
     uni.request({
