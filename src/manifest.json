@@ -1,6 +1,6 @@
 {
   "name": "uniapp-mushroom-online",
-  "appid": "wxffa46fb8f2f7071d",
+  "appid": "",
   "description": "",
   "versionName": "1.0.0",
   "versionCode": "100",
@@ -54,9 +54,9 @@
   "mp-weixin": {
     /* 小程序特有相关 */
     "usingComponents": true,
-    "appid": "",
+    "appid": "wxffa46fb8f2f7071d",
     "setting": {
-      "urlCheck": true
+      "urlCheck": false
     }
   },
   "mp-alipay": {

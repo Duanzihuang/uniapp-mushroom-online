@@ -7,12 +7,7 @@
         <p class="progress">已学习{{item.study_hour}}课时/{{item.total_hour || 0}}课时</p>
       </div>
       <div class="circle">
-        <dzh-mp-circle
-          :canvasId="item.sid"
-          :progress="item.study_progress"
-          :width="55"
-          :height="55"
-        ></dzh-mp-circle>
+        <circle :canvasId="item.sid" :progress="item.study_progress" :width="55" :height="55"></circle>
       </div>
     </div>
     <div v-if="isEmpty">
@@ -23,11 +18,11 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import DzhMpCircle from '../../components/DzhMpCircle'
-import { fetch } from '../../utils/request'
+import Circle from '../../components/Circle.vue'
+import { fetch } from '../../utils/fetch'
 export default Vue.extend({
   components: {
-    DzhMpCircle
+    Circle
   },
   data() {
     return {

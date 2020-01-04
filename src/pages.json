@@ -2,6 +2,18 @@
   "pages": [
     //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
     {
+      "path": "pages/login/index",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
+      "path": "pages/phone-login/index",
+      "style": {
+        "navigationBarTitleText": ""
+      }
+    },
+    {
       "path": "pages/home/index",
       "style": {
         "navigationBarTitleText": "酷丁鱼课程"
@@ -25,12 +37,6 @@
         "navigationBarTitleText": "我的",
         "navigationBarTextStyle": "white",
         "navigationBarBackgroundColor": "#ff8d44"
-      }
-    },
-    {
-      "path": "pages/phone-login/index",
-      "style": {
-        "navigationBarTitleText": ""
       }
     },
     {

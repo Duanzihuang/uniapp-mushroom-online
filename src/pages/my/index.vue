@@ -45,7 +45,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { fetch } from '../../utils/request'
+import { fetch } from '../../utils/fetch'
 export default Vue.extend({
   data() {
     return {

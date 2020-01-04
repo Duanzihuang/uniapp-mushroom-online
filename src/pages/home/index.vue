@@ -5,7 +5,7 @@
     <!-- 轮播图 -->
     <swiper indicator-dots circular autoplay indicator-active-color="#fff" :interval="3000">
       <navigator
-        :url="'/pages/course-detail/main?id='+item.course_id"
+        :url="'/pages/course-detail/index?id='+item.course_id"
         v-for="item in swipers"
         :key="item.id"
       >
@@ -59,8 +59,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { fetch } from '../../utils/request'
-import SearchBar from '../../components/SearchBar'
+import { fetch } from '../../utils/fetch'
+import SearchBar from '../../components/SearchBar.vue'
 export default Vue.extend({
   components: {
     SearchBar

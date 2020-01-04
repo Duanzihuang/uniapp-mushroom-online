@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { fetch } from '../../utils/request.js'
+import { fetch } from '../../utils/fetch'
 export default Vue.extend({
   data() {
     return {
@@ -37,6 +37,7 @@ export default Vue.extend({
 
       const result = await fetch({
         url: 'user/vcode',
+        isNeedAuth: false,
         data: {
           phone: this.phone
         }
@@ -55,6 +56,8 @@ export default Vue.extend({
       const result = await fetch({
         method: 'POST',
         url: 'user/login',
+        tip: '登录中...',
+        isNeedAuth: false,
         data: {
           phone: this.phone,
           vcode: this.vcode
@@ -63,7 +66,7 @@ export default Vue.extend({
 
       if (result.data.status === 0) {
         // 保存token
-        uni.setStorageSync('token', result.data.token)
+        uni.setStorageSync('my_token', result.data.token)
 
         // 提示
         uni.showToast({

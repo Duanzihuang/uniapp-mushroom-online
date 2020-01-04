@@ -3,13 +3,14 @@ import Vue from 'vue'
 export default Vue.extend({
   mpType: 'app',
   onLaunch() {
-    console.log('App Launch')
-  },
-  onShow() {
-    console.log('App Show')
-  },
-  onHide() {
-    console.log('App Hide')
+    const my_token = uni.getStorageSync('my_token')
+
+    if (my_token) {
+      // 有，则直接跳转到首页
+      uni.reLaunch({
+        url: '/pages/home/index'
+      })
+    }
   }
 })
 </script>
