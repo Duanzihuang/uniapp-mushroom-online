@@ -47,6 +47,12 @@
       "style": {
         "navigationBarTitleText": ""
       }
+    },
+    {
+      "path": "pages/play/index",
+      "style": {
+        "navigationBarTitleText": ""
+      }
     }
   ],
   "tabBar": {
