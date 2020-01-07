@@ -219,7 +219,7 @@ export default Vue.extend({
       const videoContent = uni.createVideoContext('courseVideoId')
       videoContent.pause()
       uni.navigateTo({
-        url: `/pages/play/index?id=${this.course_id}&title=${this.course_detail.course.title}&price=${this.course_detail.course.price}`
+        url: `/pages/play/index?id=${this.course_id}&title=${this.course_detail.course.title}&price=${this.course_detail.course.price}&cover_image_url=${this.course_detail.course.cover_image_url}`
       })
     }
   }
@@ -336,7 +336,7 @@ export default Vue.extend({
     // position: absolute;
     z-index: 5;
     width: 750rpx;
-    height: 582rpx;
+    // height: 582rpx;
     background-color: #ffffff;
     .head {
       height: 120rpx;

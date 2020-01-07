@@ -18,7 +18,7 @@
     <view>
       <view class="tips">
         <text>推荐课程</text>
-        <img @click="goToCoursePage" src="/static/images/arrow@2x.png" alt />
+        <image @click="goToCoursePage" src="/static/images/arrow@2x.png" alt />
       </view>
       <scroll-view scroll-x class="course-container">
         <navigator
@@ -127,7 +127,7 @@ swiper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  p {
+  text {
     font-size: 36rpx;
     font-weight: 700;
     color: #212121;

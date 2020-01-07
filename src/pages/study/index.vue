@@ -7,7 +7,13 @@
         <p class="progress">已学习{{item.study_hour}}课时/{{item.total_hour || 0}}课时</p>
       </div>
       <div class="circle">
-        <circle :canvasId="item.sid" :progress="item.study_progress" :width="55" :height="55"></circle>
+        <circle
+          ref="circleRef"
+          :canvasId="item.sid"
+          :progress="item.study_progress"
+          :width="55"
+          :height="55"
+        ></circle>
       </div>
     </div>
     <div v-if="isEmpty">
@@ -16,7 +22,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 import Circle from '../../components/Circle.vue'
 import { fetch } from '../../utils/fetch'
@@ -39,6 +45,15 @@ export default Vue.extend({
       const res = await fetch({ url: 'study/progress' })
       this.isEmpty = res.data.message.length === 0
       this.studyProgresses = res.data.message
+
+      // 绘制进度条
+      Vue.nextTick(() => {
+        if (this.$refs.circleRef) {
+          this.$refs.circleRef.forEach(node => {
+            node.drawProgress()
+          })
+        }
+      })
     }
   }
 })

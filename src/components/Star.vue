@@ -12,7 +12,7 @@
     <view class="star">
       <image
         @click="star(index)"
-        v-for="(item,index) in score"
+        v-for="(item,index) in myScore"
         :key="item"
         src="/static/images/star_fill@2x.png"
         alt
@@ -33,12 +33,20 @@ export default {
       default: true
     }
   },
+  data() {
+    return {
+      myScore: 0
+    }
+  },
+  onReady() {
+    this.myScore = this.score
+  },
   methods: {
     star(index) {
       if (this.readonly) return
-      this.score = index + 1
+      this.myScore = index + 1
       // 传递选择的分数给父组件
-      this.$emit('changeScore', this.score)
+      this.$emit('changeScore', this.myScore)
     }
   }
 }

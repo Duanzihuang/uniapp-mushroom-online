@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<script lang="javascript">
+<script>
 export default {
   data() {
     return {
@@ -44,10 +44,6 @@ export default {
       default: 100
     }
   },
-  // updated() {
-  //   this.myForegroundColor = this.foregroundColor
-  //   this.drawProgress()
-  // },
   onReady() {
     this.myForegroundColor = this.foregroundColor
     this.drawProgress()
@@ -55,6 +51,7 @@ export default {
   methods: {
     // 绘制进度
     drawProgress() {
+      console.log('--drawProgress--')
       if (this.progress <= 30) {
         this.myForegroundColor = '#ff0000'
       } else if (this.progress > 30 && this.progress < 50) {

@@ -53,6 +53,12 @@
       "style": {
         "navigationBarTitleText": ""
       }
+    },
+    {
+      "path": "pages/pay/index",
+      "style": {
+        "navigationBarTitleText": "确认订单"
+      }
     }
   ],
   "tabBar": {
