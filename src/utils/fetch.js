@@ -1,5 +1,7 @@
 import { BASEURL } from './url'
 
+import store from '../store'
+
 // 封装的网络请求的方法
 export const fetch = ({
   method = 'GET',
@@ -10,10 +12,19 @@ export const fetch = ({
   isNeedAuth = true
 }) => {
   if (isNeedAuth) {
-    // 是否需要授权
-    const token = uni.getStorageSync('my_token')
+    // 先获取store中的token
+    const token = store.getters.getToken
+
+    // store中有token
     if (token) {
       header.Authorization = token
+    } else {
+      // store中没有token
+      const my_token = uni.getStorageSync('my_token')
+      header.Authorization = my_token
+
+      // 把从本地取出来的token，放到store中
+      store.commit('setToken', my_token)
     }
   }
 

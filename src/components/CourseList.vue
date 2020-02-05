@@ -23,9 +23,6 @@ export default {
       type: Array,
       default: []
     }
-  },
-  onShow() {
-    console.log("1111111onShow111111")
   }
 }
 </script>

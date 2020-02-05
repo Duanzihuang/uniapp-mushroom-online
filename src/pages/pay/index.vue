@@ -40,11 +40,12 @@ export default {
       cover_image_url: ''
     }
   },
-  onLoad(options) {
-    this.course_id = options.id
-    this.title = options.title
-    this.price = options.price
-    this.cover_image_url = options.cover_image_url
+  onLoad(options: any) {
+    this['course_id'] = options.id
+    this['title'] = options.title
+    this['price'] = options.price
+    // https://blog.csdn.net/weixin_34044273/article/details/92374658
+    this['cover_image_url'] = options.cover_image_url
   },
   methods: {
     orderAndPay() {
@@ -57,17 +58,17 @@ export default {
         url: 'order/create',
         method: 'POST',
         data: {
-          course_id: this.course_id,
-          price: this.price
+          course_id: this['course_id'],
+          price: this['price']
         }
       })
 
       if (res.data.status === 0) {
         // 模拟支付
-        this.payOrder(res.data.order_id)
+        // this.payOrder(res.data.order_id)
 
         // 微信支付
-        // this.wxPayOrder(res.data.order_number)
+        this.wxPayOrder(res.data.order_number)
       }
     },
     // 模拟支付

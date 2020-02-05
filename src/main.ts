@@ -3,4 +3,8 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 
-new App().$mount()
+// import store from './store'
+
+new App({
+    // store
+}).$mount()

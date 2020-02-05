@@ -115,12 +115,12 @@ export default Vue.extend({
       isHidden: false // 是否隐藏
     }
   },
-  onLoad(options) {
-    this.course_id = options.id
+  onLoad(options: any) {
+    this['course_id'] = options.id
     this.getCourseDetailData()
   },
   onReady() {
-    this.videoContext = uni.createVideoContext('courseVideoId')
+    this['videoContext'] = uni.createVideoContext('courseVideoId')
   },
   onShow() {
     if (this.isHidden) {
@@ -137,7 +137,7 @@ export default Vue.extend({
   },
   methods: {
     async getCourseDetailData() {
-      const res = await fetch({ url: `course/${this.course_id}` })
+      const res = await fetch({ url: `course/${(this as any).course_id}` })
       this.course_detail = res.data.message
       // 设置评论总数
       this.menus[2] = `评价(${res.data.message.commentTotal})`
@@ -183,7 +183,7 @@ export default Vue.extend({
             }
           })
           if (res1.data.status === 0) {
-            this.course_detail.lecturer.is_follow = 1
+            ;(this as any).course_detail.lecturer.is_follow = 1
             uni.showToast({
               title: res1.data.message, //提示的内容,
               icon: 'none', //图标,
@@ -201,7 +201,7 @@ export default Vue.extend({
             }
           })
           if (res2.data.status === 0) {
-            this.course_detail.lecturer.is_follow = 0
+            ;(this as any).course_detail.lecturer.is_follow = 0
             uni.showToast({
               title: res2.data.message, //提示的内容,
               icon: 'none', //图标,
@@ -219,7 +219,11 @@ export default Vue.extend({
       const videoContent = uni.createVideoContext('courseVideoId')
       videoContent.pause()
       uni.navigateTo({
-        url: `/pages/play/index?id=${this.course_id}&title=${this.course_detail.course.title}&price=${this.course_detail.course.price}&cover_image_url=${this.course_detail.course.cover_image_url}`
+        url: `/pages/play/index?id=${(this as any).course_id}&title=${
+          (this as any).course_detail.course.title
+        }&price=${(this as any).course_detail.course.price}&cover_image_url=${
+          (this as any).course_detail.course.cover_image_url
+        }`
       })
     }
   }
