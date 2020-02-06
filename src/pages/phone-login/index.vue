@@ -4,7 +4,7 @@
     <p class="subtitle">用于即使获取课程最新信息</p>
     <div class="content">
       <input v-model="phone" class="phone" placeholder="请输入您的手机号" type="number" />
-      <div @click="getVcode" class="get_vcode">获取验证码</div>
+      <div @click="getVcode" class="get_vcode" :style="{color: isCountDown ? '#ccc' : 'black'}">{{tips}}</div>
       <input v-model="vcode" class="vcode" placeholder="请输入验证码" type="number" />
     </div>
     <div class="phone-login">
@@ -20,7 +20,11 @@ export default Vue.extend({
   data() {
     return {
       phone: '17704051019',
-      vcode: ''
+      vcode: '',
+      tips: '获取验证码', // 提示文字
+      timer: 0, // 定时器
+      count: 10, // 倒计时的总秒数
+      isCountDown: false // 是否正在倒计时
     }
   },
   methods: {
@@ -34,6 +38,38 @@ export default Vue.extend({
         })
         return
       }
+
+      // 正则校验
+      var reg = /^1[3456789][0-9]{9}$/
+      if (!reg.test(this.phone)){
+        uni.showToast({
+          title: '手机号不合法',
+          icon: 'none',
+          duration: 1000
+        })
+        return
+      }
+
+      // 正在倒计时
+      if (this.isCountDown) return
+      this.isCountDown = true
+      this.tips = `${this.count}`
+
+      this.timer = setInterval(() => {
+        if (this.count <= 1) {
+          this.isCountDown = false
+          this.count = 10
+          this.tips = '获取验证码'
+          // 清除定时器
+          clearInterval(this.timer)
+
+          return
+        }
+
+        this.count--
+
+        this.tips = `${this.count}`
+      },1000)
 
       const result = await fetch({
         url: 'user/vcode',
@@ -87,6 +123,9 @@ export default Vue.extend({
         })
       }
     }
+  },
+  onUnload(){
+    clearInterval(this.timer)
   }
 })
 </script>

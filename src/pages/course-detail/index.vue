@@ -119,9 +119,6 @@ export default Vue.extend({
     this['course_id'] = options.id
     this.getCourseDetailData()
   },
-  onReady() {
-    this['videoContext'] = uni.createVideoContext('courseVideoId')
-  },
   onShow() {
     if (this.isHidden) {
       this.getCourseDetailData()
@@ -145,7 +142,9 @@ export default Vue.extend({
     // 播放课程简介视频
     playCourseVideo() {
       this.isPlaying = true
-      // this.videoContent.play()
+
+      // 播放
+      uni.createVideoContext('courseVideoId').play()
     },
     toggleSelect(index) {
       this.selectIndex = index
