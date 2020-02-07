@@ -14,7 +14,9 @@
 <script lang="ts">
 import Vue from 'vue'
 import { fetch } from '../../utils/fetch'
+import loginMixin from '../../mixins/login'
 export default Vue.extend({
+  mixins:[loginMixin],
   methods: {
     // 跳转到手机号登录页面
     phoneLogin() {
@@ -43,20 +45,9 @@ export default Vue.extend({
               avatar: e.mp.detail.userInfo.avatarUrl
             }
           })
-          if (res.data.status === 0) {
-            // 登录成功
-            // 保存token
-            uni.setStorageSync('my_token', res.data.token)
-            // 跳转到首页
-            uni.reLaunch({ url: '/pages/home/index' })
-          } else {
-            uni.showModal({
-              content: res.data.message, //提示的内容,
-              showCancel: false, //是否显示取消按钮,
-              confirmText: '确定', //确定按钮的文字，默认为取消，最多 4 个字符,
-              confirmColor: '#ff8d44' //确定按钮的文字颜色
-            })
-          }
+
+          // 调用混入中的方法
+          this['loginHandle'](res)
         }
       })
     }

@@ -16,7 +16,9 @@
 <script lang="ts">
 import Vue from 'vue'
 import { fetch } from '../../utils/fetch'
+import loginMixin from '../../mixins/login'
 export default Vue.extend({
+  mixins:[loginMixin],
   data() {
     return {
       phone: '17704051019',
@@ -99,7 +101,9 @@ export default Vue.extend({
           vcode: this.vcode
         }
       })
-
+      
+      this['loginHandle'](result)
+      /**
       if (result.data.status === 0) {
         // 保存token
         uni.setStorageSync('my_token', result.data.token)
@@ -122,6 +126,7 @@ export default Vue.extend({
           duration: 1000
         })
       }
+      */
     }
   },
   onUnload(){

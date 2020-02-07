@@ -51,7 +51,6 @@ export default {
   methods: {
     // 绘制进度
     drawProgress() {
-      console.log('--drawProgress--')
       if (this.progress <= 30) {
         this.myForegroundColor = '#ff0000'
       } else if (this.progress > 30 && this.progress < 50) {
