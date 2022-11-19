@@ -52,7 +52,7 @@
     "@dcloudio/webpack-uni-pages-loader": "^2.0.0-24220191115006",
     "@vue/cli-plugin-babel": "3.5.1",
     "@vue/cli-plugin-typescript": "^3.5.1",
-    "@vue/cli-service": "^4.1.0",
+    "@vue/cli-service": "^5.0.8",
     "babel-plugin-import": "^1.11.0",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
